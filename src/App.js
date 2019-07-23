@@ -1,21 +1,13 @@
 import React from 'react';
 import './App.css';
 
+class Form2 extends React.Component {
+  render() {
 
-class Form1 extends React.Component {
+    if (Form1.state.show === false) {
 
-  state = {
-    show: true
-  }
-
-  changeStates= () =>{
-
-    this.setState({show: !this.state.show})
-
-  }
-  Form2(){
-    return(
-      <form action="" id="form2">
+      return (
+        <form action="" id="form2">
           <table id="table2">
             <tr><td colSpan='3'>Operacion Seleccionada</td></tr>
             <tr><td colSpan='3'>¿Cuál es la variable que desea calcular?</td></tr>
@@ -48,20 +40,37 @@ class Form1 extends React.Component {
             </tr>
           </table>
         </form>
-    )
+      )
+
+    }
+
   }
 
+}
+
+
+class Form1 extends React.Component {
+
+  state = {
+    show: true
+  }
+
+  changeStates = () => {
+
+    this.setState({ show: !this.state.show })
+
+  }
 
   render() {
-    if(this.state.show===true){
+    if (this.state.show === true) {
       return (
         <form action="">
           <table id='table1' >
             <tr colspan='3'><td>{this.props.mytext}</td></tr>
             <tr colspan='3'><td>{this.props.myText2}</td></tr>
-            <tr><td><select onChange= {
-              this.changeStates 
-              }
+            <tr><td><select onChange={
+              this.changeStates
+            }
               name="" id="select1">
               <option value="Capitalización simple">Capitalización simple</option>
               <option value="Capitalización compuesta">Capitalización compuesta</option>
@@ -71,8 +80,6 @@ class Form1 extends React.Component {
           </table>
         </form>
       )
-    }else{
-      this.form2()
     }
   }
 }
@@ -82,16 +89,20 @@ class Form1 extends React.Component {
 class App extends React.Component {
 
   render() {
-    return (
-
-
-      <div>this is my  component
-        <Form1 mytext="Bienvenido a la Calculadora Financiera"
-          myText2='Cuál es la operación que desea realizar?' />
-      </div>
-    )
-
-
+    
+      return (
+        <div>
+          <Form1 mytext="Bienvenido a la Calculadora Financiera"
+            myText2='Cuál es la operación que desea realizar?' />
+        </div>
+      )
+    // else {
+    //   return (
+    //     <div>
+    //       <Form2 />
+    //     </div>
+    //   )
+    // }
   }
 }
 
